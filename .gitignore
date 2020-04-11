@@ -1,0 +1,8 @@
+node_modules
+bootstrap
+public
+dist
+src
+private
+.ftpconfig
+.DS_Store
