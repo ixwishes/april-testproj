@@ -19,7 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::get('/to-do', function () {
     return view('todo');
+})->middleware('auth');
+
+Route::get('/weather', function () {
+    return view('weather');
 })->middleware('auth');

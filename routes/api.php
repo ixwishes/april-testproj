@@ -17,11 +17,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+/* todo app */
 Route::middleware('auth:api')->get('/tasks', [
   'as' => 'tasks.index',
   'uses' => 'API\TaskController@index'
 ]);
-
 
 Route::middleware('auth:api')->get('tasks/{id}', [
   'as' => 'tasks.show',
@@ -41,4 +41,25 @@ Route::middleware('auth:api')->post('/tasks', [
 Route::middleware('auth:api')->delete('/tasks/{id}', [
   'as' => 'tasks.destroy',
   'uses' => 'API\TaskController@destroy'
+]);
+
+/* weather app */
+Route::middleware('auth:api')->get('/weather', [
+  'as' => 'weather.index',
+  'uses' => 'API\WeatherController@index'
+]);
+
+Route::middleware('auth:api')->post('/weather/city', [
+  'as' => 'weather.store',
+  'uses' => 'API\WeatherController@store'
+]);
+
+Route::middleware('auth:api')->put('/weather/city/{id}', [
+  'as' => 'weather.update',
+  'uses' => 'API\WeatherController@update'
+]);
+
+Route::middleware('auth:api')->delete('/weather/city/{id}', [
+  'as' => 'weather.destroy',
+  'uses' => 'API\WeatherController@destroy'
 ]);

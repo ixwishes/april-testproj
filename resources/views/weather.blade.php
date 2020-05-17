@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>To-Dos</title>
+    <title>Weather App</title>
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -18,14 +18,15 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Catamaran:200,400,800|Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/weatherapp.css?v=0.0.55') }}" rel="stylesheet">
 
 </head>
 <header>
     <nav class="navbar navbar-toggleable-md navbar-expand-md navbar-light bg-light">
-        <a class="navbar-brand" href="/">aprilandkirt</a>
+        <a class="navbar-brand" href="/">April's Weather App</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -86,9 +87,8 @@
 
 <body>
     <div id="app">
-      <new-task></new-task>
     </div>
-  <script src="{{mix('js/app.js')}}"></script>
+  <script src="{{mix('js/weatherapp.js')}}"></script>
 </body>
 
 </html>

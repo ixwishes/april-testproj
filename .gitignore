@@ -6,3 +6,6 @@ src
 private
 .ftpconfig
 .DS_Store
+.*
+/vendor
+/tests

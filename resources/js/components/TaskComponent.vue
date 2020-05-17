@@ -42,6 +42,9 @@
             this.$emit('update', this.id);
           }
         },
+        created() {
+          console.log(this.name);
+        },
         props: ['id', 'name', 'description', 'target_date', 'completed', 'completed_at']
     }
 </script>

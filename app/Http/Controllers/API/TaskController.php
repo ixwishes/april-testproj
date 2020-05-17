@@ -47,8 +47,13 @@ class TaskController extends BaseController
      */
     public function show($id)
     {
-      $result = \App\Task::find($id)->get();
-      return $this->sendResponse($result, 'tasks', null);
+      $task = Task::where('id', $id)->first();
+
+      if ($task->user_id == Auth::user()->id) {
+        return $this->sendResponse([$result], 'tasks', null);
+      }
+
+      return null;
     }
 
     /**
@@ -61,13 +66,19 @@ class TaskController extends BaseController
     public function update(Request $request)
     {
         $task = Task::where('id', $request->id)->first();
-        $task->completed = $request->completed;
-        if ($task->completed) {
-          $task->completed_at = date('Y-m-d');
-        }
-        $task->save();
+        if ($task->user_id == Auth::user()->id) {
+          $task->completed = $request->completed;
 
-        return $this->sendResponse([$task], 'tasks', null);
+          if ($task->completed) {
+            $task->completed_at = date('Y-m-d');
+          }
+
+          $task->save();
+          return $this->sendResponse([$task], 'tasks', null);
+        }
+
+        return null;
+
     }
 
     /**
@@ -78,7 +89,7 @@ class TaskController extends BaseController
      */
     public function destroy($id)
     {
-        $result = Task::where('id', $id)->delete();
+        $result = Task::where([ ['id', '=', $id], ['user_id', '=', Auth::user()->id]])->delete();
         return $this->sendResponse([$result], 'tasks', null);
     }
 }
